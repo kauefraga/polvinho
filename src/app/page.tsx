@@ -6,9 +6,9 @@ export default function Home() {
       <header className='p-6'>
         <Image
           src='icon.svg'
-          alt='Logo do Octopus'
-          width="60"
-          height="60"
+          alt='Logo do Polvinho'
+          width='60'
+          height='60'
         />
       </header>
 
@@ -25,10 +25,10 @@ export default function Home() {
           <div className='flex flex-col items-center my-6'>
             <p className='text-lg'>Clique no botão acima para começar</p>
             <Image
-              src="/bubbles.png"
-              alt="Pequenas bolhas"
-              width="250"
-              height="400"
+              src='/bubbles.png'
+              alt='Pequenas bolhas'
+              width='250'
+              height='400'
             />
           </div>
         </section>

@@ -1,5 +1,5 @@
 {
-  "name": "octopus",
+  "name": "polvinho",
   "private": true,
   "scripts": {
     "dev": "next dev",

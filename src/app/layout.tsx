@@ -5,8 +5,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Octopus',
-  description: 'Um amigo do trabalhador independente. Você é um freelancer? Com oito tentáculos, o Octopus pode te ajudar!',
+  title: 'Polvinho',
+  description: 'Um amigo do trabalhador independente. Você é um freelancer? Com oito tentáculos, o Polvinho pode te dar uma ajudinha na hora de organizar seus trabalhos!',
 };
 
 export default function RootLayout({

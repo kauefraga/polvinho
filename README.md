@@ -1,6 +1,6 @@
-# Octopus
+# Polvinho
 
-> Um amigo do trabalhador independente. Você é um freelancer? Com oito tentáculos, o octopus pode te ajudar!
+> Um amigo do trabalhador independente. Você é um freelancer? Com oito tentáculos, o Polvinho pode te dar uma ajudinha na hora de organizar seus trabalhos!
 
 ### Sobre a aplicação
 

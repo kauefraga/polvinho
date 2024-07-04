@@ -19,6 +19,7 @@ export default function Home() {
               alt="Pequenas bolhas"
               width="250"
               height="400"
+              priority
             />
           </div>
         </section>

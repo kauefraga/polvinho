@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Polvinho',
-  description: 'Um amigo do trabalhador independente. Você é um freelancer? Com oito tentáculos, o Polvinho pode te dar uma ajudinha na hora de organizar seus trabalhos!',
+  description:
+    'Um amigo do trabalhador independente. Você é um freelancer? Com oito tentáculos, o Polvinho pode te dar uma ajudinha na hora de organizar seus trabalhos!',
 };
 
 export default function RootLayout({
@@ -15,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-br'>
+    <html lang="pt-br">
       <body className={inter.className}>{children}</body>
     </html>
   );

@@ -6,7 +6,7 @@ import { z } from 'zod';
   - paymentStatus
 */
 
-export const WorkSchema = z.object({
+export const WorkFormSchema = z.object({
   name: z
     .string()
     .min(1, 'O nome deve ter pelo menos 1 caractere')
@@ -16,4 +16,11 @@ export const WorkSchema = z.object({
   price: z.coerce.number().nonnegative(),
 });
 
-export type WorkData = z.infer<typeof WorkSchema>;
+export type WorkForm = z.infer<typeof WorkFormSchema>;
+
+const WorkDataSchema = z.object({
+  id: z.string().nanoid(),
+  createdAt: z.date(),
+});
+
+export const WorkSchema = WorkDataSchema.merge(WorkFormSchema);

@@ -1,10 +1,11 @@
 'use client';
 
-import { WorkData, WorkSchema } from '@/schemas/Work';
+import { WorkForm, WorkFormSchema, WorkSchema } from '@/schemas/Work';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Image from 'next/image';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { X } from 'lucide-react';
+import { nanoid } from 'nanoid';
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,10 +15,16 @@ export default function Modal() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<WorkData>({
-    resolver: zodResolver(WorkSchema),
+  } = useForm<WorkForm>({
+    resolver: zodResolver(WorkFormSchema),
   });
   const onSubmit = handleSubmit((data) => {
+    const work = WorkSchema.parse({
+      ...data,
+      id: nanoid(),
+      createdAt: new Date(),
+    });
+    localStorage.setItem(work.id, JSON.stringify(work));
     setIsOpen(!isOpen);
     reset();
   });
@@ -41,12 +48,7 @@ export default function Modal() {
               <h2>Novo trabalho</h2>
 
               <button onClick={() => setIsOpen(!isOpen)}>
-                <Image
-                  src="/close.svg"
-                  alt="Close icon"
-                  width="32"
-                  height="32"
-                />
+                <X strokeWidth={1.5} size={32} />
               </button>
             </header>
 

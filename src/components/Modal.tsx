@@ -15,7 +15,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import CurrencyInput from './CurrencyInput';
+import { Button } from '@/components/ui/button';
+import CurrencyInput from '@/components/CurrencyInput';
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,12 +57,12 @@ export default function Modal() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-4 rounded border-2 bg-[#fcfcfc] px-8 py-6"
+              className="flex w-full max-w-72 flex-col space-y-4 rounded border-2 bg-[#fcfcfc] p-8 md:max-w-md"
             >
               <header className="flex items-center justify-between">
-                <h2>Novo trabalho</h2>
+                <h2 className="text-lg">Novo trabalho</h2>
 
-                <button onClick={() => setIsOpen(!isOpen)}>
+                <button onClick={() => setIsOpen(!isOpen)} title="Fechar">
                   <X strokeWidth={1.5} size={32} />
                 </button>
               </header>
@@ -118,7 +119,7 @@ export default function Modal() {
                 placeholder="R$ 100,00"
               />
 
-              <button>Salvar</button>
+              <Button disabled={!form.formState.isValid}>Salvar</Button>
             </form>
           </Form>
         </div>

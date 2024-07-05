@@ -24,3 +24,4 @@ const WorkDataSchema = z.object({
 });
 
 export const WorkSchema = WorkDataSchema.merge(WorkFormSchema);
+export type Work = z.infer<typeof WorkSchema>;

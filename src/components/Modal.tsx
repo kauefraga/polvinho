@@ -17,9 +17,11 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import CurrencyInput from '@/components/CurrencyInput';
+import { useWorkStore } from '@/stores/WorkStore';
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(false);
+  const { createWork } = useWorkStore();
 
   const form = useForm<WorkForm>({
     resolver: zodResolver(WorkFormSchema),
@@ -32,12 +34,11 @@ export default function Modal() {
   });
 
   function onSubmit(values: WorkForm) {
-    const work = WorkSchema.parse({
+    createWork({
       ...values,
       id: nanoid(),
       createdAt: new Date(),
     });
-    localStorage.setItem(work.id, JSON.stringify(work));
 
     setIsOpen(!isOpen);
     form.reset();

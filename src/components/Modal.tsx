@@ -48,7 +48,7 @@ export default function Modal() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="rounded bg-[#81b894] px-4 py-3 text-xl text-[#292d32] shadow-lg transition-colors hover:bg-[#76a988] active:bg-[#6b9a7b]"
+        className="w-full rounded bg-[#81b894] px-4 py-3 text-xl text-[#292d32] shadow-lg transition-colors hover:bg-[#76a988] active:bg-[#6b9a7b]"
       >
         Novo trabalho
       </button>

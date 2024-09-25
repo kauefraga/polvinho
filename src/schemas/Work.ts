@@ -1,11 +1,5 @@
 import { z } from 'zod';
 
-/* work in progress
-  - deadline
-  - progress (started, not started, almost done...)
-  - paymentStatus
-*/
-
 export const WorkFormSchema = z.object({
   name: z
     .string()
@@ -14,6 +8,9 @@ export const WorkFormSchema = z.object({
   description: z.string().optional(),
   clientContact: z.string().optional(),
   price: z.coerce.number().nonnegative(),
+  // deadline: z.date().optional(),
+  status: z.enum(['todo', 'doing', 'done']).default('todo'),
+  paymentStatus: z.enum(['not paid', 'partial', 'paid']).default('not paid'),
 });
 
 export type WorkForm = z.infer<typeof WorkFormSchema>;

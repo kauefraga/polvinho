@@ -1,6 +1,6 @@
 'use client';
 
-import { WorkForm, WorkFormSchema, WorkSchema } from '@/schemas/Work';
+import { WorkForm, WorkFormSchema } from '@/schemas/Work';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -18,6 +18,13 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import CurrencyInput from '@/components/CurrencyInput';
 import { useWorkStore } from '@/stores/WorkStore';
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select';
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +65,7 @@ export default function Modal() {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex w-full max-w-72 flex-col space-y-4 rounded border-2 bg-[#fcfcfc] p-8 md:max-w-md"
+              className="flex w-full max-w-xs flex-col space-y-4 rounded border-2 bg-[#fcfcfc] p-8 md:max-w-md"
             >
               <header className="flex items-center justify-between">
                 <h2 className="text-lg">Novo trabalho</h2>
@@ -73,7 +80,7 @@ export default function Modal() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nome</FormLabel>
+                    <FormLabel>Nome *</FormLabel>
                     <FormControl>
                       <Input placeholder="Projeto inovador" {...field} />
                     </FormControl>
@@ -118,6 +125,60 @@ export default function Modal() {
                 name="price"
                 label="Preço"
                 placeholder="R$ 100,00"
+              />
+
+              <FormField
+                control={form.control}
+                name="paymentStatus"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Estado do pagamento</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecione o estado do pagamento" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="not paid">Não pago</SelectItem>
+                        <SelectItem value="partial">
+                          Parcialmente pago
+                        </SelectItem>
+                        <SelectItem value="paid">Pago</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="status"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Estado do trabalho</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecione o estado do trabalho" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="todo">Para fazer</SelectItem>
+                        <SelectItem value="doing">Em progresso</SelectItem>
+                        <SelectItem value="done">Feito</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
 
               <Button disabled={!form.formState.isValid}>Salvar</Button>
